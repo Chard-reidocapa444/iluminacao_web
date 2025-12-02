@@ -1,0 +1,199 @@
+:root{
+    --bg: #0f1724; /* deep navy */
+    --surface: #0b1220; /* card background */
+    --muted: #98a9b3; /* subdued text */
+    --text: #e6eef5; /* main text */
+    --accent: #06b6d4; /* bright cyan */
+    --accent-2: #5eead4; /* lighter cyan */
+    --success: #10b981; /* green */
+    --warning: #f59e0b; /* amber */
+    --danger: #ef4444; /* red */
+}
+
+/* Global layout */
+*{box-sizing:border-box}
+html,body{
+    height:100%;
+}
+body{
+    margin:0;
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    background: radial-gradient(1200px 400px at 10% 0%, rgba(6,182,212,0.08), transparent),
+                linear-gradient(180deg, var(--bg) 0%, #071224 100%);
+    color:var(--text);
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    padding:40px 20px;
+}
+
+.container{
+    width:100%;
+    max-width:1080px;
+}
+
+.topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:18px;
+}
+.topbar h1{
+    margin:0;
+    font-weight:600;
+    font-size:28px;
+    color:var(--text);
+}
+
+#mqtt-status{
+    display:inline-block;
+    padding:8px 14px;
+    border-radius:999px;
+    font-weight:600;
+    color:var(--text);
+    box-shadow:0 6px 18px rgba(2,6,23,0.45);
+    margin-bottom:16px;
+}
+
+.comodos{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap:16px;
+}
+
+.comodo{
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border: 1px solid rgba(255,255,255,0.04);
+    color:var(--text);
+    border-radius:14px;
+    padding:22px;
+    text-align:center;
+    transition: transform .22s ease, box-shadow .22s ease;
+    backdrop-filter: blur(6px);
+}
+.comodo:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(2,6,23,0.6)}
+
+.comodo h2{margin:0 0 18px 0;color:var(--muted);font-weight:600}
+
+.sala,
+.cozinha{
+    font-size:80px;
+    display:inline-block;
+    transition: transform .25s cubic-bezier(.2,.9,.2,1), opacity .2s;
+    opacity:.35;
+}
+.ligada{color:var(--warning);opacity:1;transform:scale(1.12);filter:drop-shadow(0 6px 20px rgba(245,158,11,0.28));}
+.aguardando{animation: blink 1.2s infinite}
+
+.controls{display:flex;gap:10px;justify-content:center;margin-top:16px}
+.btn{background:linear-gradient(180deg,var(--accent),var(--accent-2));border:none;color:rgba(4,20,26,0.98);font-weight:700;padding:10px 18px;border-radius:10px;cursor:pointer;box-shadow:0 8px 22px rgba(6,182,212,0.12);transition:transform .12s ease,box-shadow .12s ease}
+.btn:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(6,182,212,0.18)}
+.btn:active{transform:translateY(0);box-shadow:0 6px 14px rgba(6,182,212,0.12)}
+.btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)}
+
+/* Status states */
+.status-desconectado{background-color:var(--danger)}
+.status-reconectando{background-color:var(--warning);color:#000}
+.status-conectado{background-color:var(--success);color:#042a21}
+
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.45}}
+
+/* Small adjustments for mobile */
+@media (max-width:480px){
+    .sala,.cozinha{font-size:64px}
+    .topbar h1{font-size:20px}
+}
+
+/* Accessibility: focus outlines */
+.btn:focus{outline:3px solid rgba(6,182,212,0.18);outline-offset:4px}
+
+/* A subtle footer spacing if needed */
+footer{opacity:0.7;color:var(--muted);padding-top:12px;text-align:center}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f0f4f8;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h1 {
+    margin: 20px 0;
+    color: #333;
+}
+
+.comodo {
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px;
+    width: 300px;
+    text-align: center;
+    transition: background 0.3s;
+}
+
+.comodo h2 {
+    margin-bottom: 60px;
+    color: #555;
+}
+
+.sala,
+.cozinha {
+    font-size: 60px;
+    margin: 20px 0;
+    transition: transform 0.3 ease, color 0.3 ease;
+    opacity: 0.3;
+}
+
+.ligada {
+    color: #ffeb3b;
+    opacity: 1;
+}
+
+.aguardando {
+    animation: piscar 1s infinite ;
+}
+
+button {
+    background-color: #2196f3;
+    border:  none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#mqtt-status {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+}
+
+.status-desconectado {
+    background-color: red;
+}
+
+.status-reconectando {
+    background-color: orange;
+}
+
+.status-conectado {
+    background-color: green;
+}
+
+@keyframes piscar {
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}

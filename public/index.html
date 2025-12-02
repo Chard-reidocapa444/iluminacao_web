@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Iluminação - Web</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    
+    <div id="mqtt-status" class="status-reconectando">MQTT: Desconectado</div>
+
+    <div class="container">
+        <!-- Título -->
+        <header class="topbar">
+            <h1>Controle de Iluminação</h1>
+        </header>
+
+        <!-- Cartão do dispositivo -->
+        <div class="comodos">
+            <div class="comodo">
+                <h2>Sala</h2>
+                <div id="lampada" class="sala">💡</div>
+                <div class="controls">
+                    <button class="btn" onclick="ligar('sala')">Ligar</button>
+                    <button class="btn btn-outline" onclick="desligar('sala')">Desligar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
